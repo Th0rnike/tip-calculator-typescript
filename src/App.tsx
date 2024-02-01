@@ -1,28 +1,21 @@
 import { useState } from "react";
 import "./App.css";
-import logo from "./assets/logo.svg";
+// import logo from "./assets/logo.svg";
 
 function App() {
   const [bill, setBill] = useState<number>(0);
   const [people, setPeople] = useState<number>(0);
   const [tip, setTip] = useState<number>(0);
+  // const [custom, setCustom] = useState<number>(0);
 
   const tipValue = Number((((bill / people) * tip) / 100).toFixed(2));
-  const totalPrice = Number((bill / people + tipValue).toFixed(2));
+  const totalPrice = Number((bill / people).toFixed(2));
 
   const tipsArray = [5, 10, 15, 25, 50];
 
-  // const updateBill = (e) => {
-  //   let val = e.target.value;
-  //   console.log(val);
-  //   setBill(val);
-  // };
-
   const updatePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    const updatePeopleValue = Number(val.split(".")[0]);
-    console.log(updatePeopleValue);
-    setPeople(updatePeopleValue);
+    const val = e.target.valueAsNumber;
+    setPeople(val);
   };
 
   const updateTip = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,6 +23,34 @@ function App() {
     const val = Number(target.textContent?.split("%")[0]);
     setTip(val);
   };
+
+  // const customTip = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const val = e.target.value;
+  //   const updateCustomTip = Number(val.split(".")[0]);
+  //   console.log(updateCustomTip);
+  //   setCustom(updateCustomTip);
+  // };
+
+  // const checkError = () => {
+  //   console.log("chec error run");
+  //   if (people === 0) {
+  //     console.log("settin check error true");
+  //     setError(true);
+  //   }
+  // };
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === ".") {
+      e.preventDefault();
+    }
+  };
+
+  const reset = () => {
+    setBill(0);
+    setPeople(0);
+    setTip(0);
+  };
+
+  // console.log("render");
 
   return (
     <div>
@@ -50,6 +71,13 @@ function App() {
             {t + "%"}
           </button>
         ))}
+        {/* <input
+          className="button"
+          type="number"
+          placeholder="Custom"
+          onChange={customTip}
+          value={custom ? custom : ""}
+        /> */}
       </div>
       <div>
         <label htmlFor="people">Number of People</label>
@@ -57,12 +85,13 @@ function App() {
           type="number"
           placeholder="0"
           onChange={updatePeople}
+          onKeyDown={handleKeyDown}
           value={people ? people : ""}
         />
       </div>
-
-      <div>Tip Amount {tipValue ? tipValue : ""}</div>
+      <div>Tip Amount {bill && tipValue && people ? tipValue : ""}</div>
       <div>Total {bill && people ? totalPrice : ""}</div>
+      <button onClick={reset}>reset</button>
     </div>
   );
 }
