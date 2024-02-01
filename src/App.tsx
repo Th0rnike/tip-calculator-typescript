@@ -7,8 +7,8 @@ function App() {
   const [people, setPeople] = useState<number>(0);
   const [tip, setTip] = useState<number>(0);
 
-  const totalPrice = (bill / people).toFixed(1);
-  const tipValue = ((bill / people) * tip) / 100;
+  const tipValue = Number((((bill / people) * tip) / 100).toFixed(2));
+  const totalPrice = Number((bill / people + tipValue).toFixed(2));
 
   const tipsArray = [5, 10, 15, 25, 50];
 
@@ -18,11 +18,12 @@ function App() {
   //   setBill(val);
   // };
 
-  // const updatePeople = (e) => {
-  //   let val = e.target.value;
-  //   console.log(val);
-  //   setPeople(val);
-  // };
+  const updatePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    const updatePeopleValue = Number(val.split(".")[0]);
+    console.log(updatePeopleValue);
+    setPeople(updatePeopleValue);
+  };
 
   const updateTip = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
@@ -39,7 +40,7 @@ function App() {
           id="bill"
           placeholder="0"
           onChange={(e) => setBill(e.target.valueAsNumber)}
-          value={!bill ? "" : bill}
+          value={bill ? bill : ""}
         />
       </div>
       <div>
@@ -55,12 +56,12 @@ function App() {
         <input
           type="number"
           placeholder="0"
-          onChange={(e) => setPeople(e.target.valueAsNumber)}
-          value={!people ? "" : people}
+          onChange={updatePeople}
+          value={people ? people : ""}
         />
       </div>
 
-      <div>Tip Amount {bill && tipValue}</div>
+      <div>Tip Amount {tipValue ? tipValue : ""}</div>
       <div>Total {bill && people ? totalPrice : ""}</div>
     </div>
   );
