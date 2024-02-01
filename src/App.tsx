@@ -6,9 +6,9 @@ function App() {
   const [bill, setBill] = useState<number>(0);
   const [people, setPeople] = useState<number>(0);
   const [tip, setTip] = useState<number>(0);
-  // const [custom, setCustom] = useState<number>(0);
+  const [custom, setCustom] = useState<number>(0);
 
-  const tipValue = Number((((bill / people) * tip) / 100).toFixed(2));
+  const tipValue = Number((((bill / people) * (tip || custom)) / 100).toFixed(2));
   const totalPrice = Number((bill / people).toFixed(2));
 
   const tipsArray = [5, 10, 15, 25, 50];
@@ -25,10 +25,8 @@ function App() {
   };
 
   // const customTip = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const val = e.target.value;
-  //   const updateCustomTip = Number(val.split(".")[0]);
-  //   console.log(updateCustomTip);
-  //   setCustom(updateCustomTip);
+  //   const val = e.target.valueAsNumber;
+  //   setCustom(val);
   // };
 
   // const checkError = () => {
@@ -71,13 +69,14 @@ function App() {
             {t + "%"}
           </button>
         ))}
-        {/* <input
+        <input
           className="button"
           type="number"
           placeholder="Custom"
-          onChange={customTip}
+          onChange={updateTip}
+          onKeyDown={handleKeyDown}
           value={custom ? custom : ""}
-        /> */}
+        />
       </div>
       <div>
         <label htmlFor="people">Number of People</label>
@@ -89,7 +88,9 @@ function App() {
           value={people ? people : ""}
         />
       </div>
-      <div>Tip Amount {bill && tipValue && people ? tipValue : ""}</div>
+      <div>
+        Tip Amount {bill && (tipValue || custom) && people ? tipValue : ""}
+      </div>
       <div>Total {bill && people ? totalPrice : ""}</div>
       <button onClick={reset}>reset</button>
     </div>
