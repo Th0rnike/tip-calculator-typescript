@@ -1,0 +1,10 @@
+:root{
+    --background-color: rgba(197, 228, 231, 1);
+    --input-background-color: rgba(243, 249, 250, 1);
+    --label-color: rgba(94, 122, 125, 1);
+    --button-color: rgba(0, 71, 75, 1);
+    --results-lightgreen-color: rgba(38, 194, 174, 1);
+    --empty-button-color: rgba(13, 104, 109, 1);
+    --hover-color: rgba(159, 232, 223, 1);
+    --error-color: rgba(225, 116, 87, 1);
+}

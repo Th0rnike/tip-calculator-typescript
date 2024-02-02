@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 // import logo from "./assets/logo.svg";
 
 function App() {
-  const [bill, setBill] = useState<number>(200);
+  const [bill, setBill] = useState<number>(0);
   const [people, setPeople] = useState<number>(2);
   const [tip, setTip] = useState<number>(0);
   const [customValue, setCustomValue] = useState<number>(0);
+  const [billError, setBillError] = useState<boolean>(false);
+  const [peopleError, setPeopleError] = useState<boolean>(false);
 
   const chooseTipValue = customValue !== 0 ? customValue : tip;
   const tipValue = Number(
     (((bill / people) * chooseTipValue) / 100).toFixed(2)
   );
-  console.log(tipValue);
 
   const totalPrice = Number((bill / people).toFixed(2));
   const tipsArray = [5, 10, 15, 25, 50];
@@ -26,7 +27,7 @@ function App() {
     const target = e.target as HTMLButtonElement;
     const val = Number(target.textContent?.split("%")[0]);
     setTip(val);
-    setCustomValue(0)
+    setCustomValue(0);
   };
 
   const customTip = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,9 +35,36 @@ function App() {
     setCustomValue(val);
   };
 
+  const handleErrorKeys: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key >= "a" && e.key <= "z") {
+      e.preventDefault();
+      setBillError(true);
+    }
+    if (e.key >= "!" && e.key <= ")") {
+      e.preventDefault();
+      setBillError(true);
+    }
+    if (e.key === "-" || e.key === "+") {
+      e.preventDefault();
+      setBillError(true);
+    }
+  };
+
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === ".") {
       e.preventDefault();
+    }
+    if (e.key >= "a" && e.key <= "z") {
+      e.preventDefault();
+      setPeopleError(true);
+    }
+    if (e.key >= "!" && e.key <= ")") {
+      e.preventDefault();
+      setPeopleError(true);
+    }
+    if (e.key === "-" || e.key === "+") {
+      e.preventDefault();
+      setPeopleError(true);
     }
   };
 
@@ -51,11 +79,13 @@ function App() {
   return (
     <div>
       <div>
+        {billError ? <span className="error">Numbers Only</span> : ""}
         <label htmlFor="bill">Bill</label>
         <input
           type="number"
           id="bill"
           placeholder="0"
+          onKeyDown={handleErrorKeys}
           onChange={(e) => setBill(e.target.valueAsNumber)}
           value={bill ? bill : ""}
         />
@@ -77,6 +107,7 @@ function App() {
         />
       </div>
       <div>
+        {peopleError ? <span className="error">Numbers Only</span> : ""}
         <label htmlFor="people">Number of People</label>
         <input
           type="number"
