@@ -8,3 +8,129 @@ body{
     font-family: 'Space Mono', monospace;
 }
 
+.App{
+    background-color: var(--background-color);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    width: 85px;
+    height: 55px;
+    margin-bottom: 85px;
+}
+
+.container{
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;    
+    padding: 45px;
+    border-radius: 25px;
+    max-width: 920px;
+    gap: 48px;
+}
+
+.results{
+    background-color: var(--button-color);
+}
+
+label{
+    color: var(--label-color);
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+}
+
+.buttons-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 14px;
+    column-gap: 16px;
+    margin: 40px 0;
+
+}
+
+.buttons-container span{
+    grid-column: span 3;
+    color: var(--label-color);
+    padding: 10px 0;
+}
+
+.buttons-container button,
+.button{
+    width: 117px;
+    border-radius: 2px;
+    font-size: 24px;
+    border: none;
+    font-weight: 700;
+    background-color: var(--button-color);
+    color: white;
+}
+
+.button{
+    background-color: white;
+    color: var(--button-color);
+    padding: 10px 0;
+    text-align: center;
+}
+
+.button:focus{
+    box-shadow: 0 0 0 2px var(--results-lightgreen-color);
+}
+
+.button::placeholder{
+    color: var(--custom-color);
+}
+
+input{
+    outline: none;
+    border: none;
+    text-align: right;
+    background-color: var(--input-background-color);
+    font-weight: 700;
+    color: var(--button-color);
+}
+
+.input-container input{
+    font-size: 24px;
+    padding: 15px 17px;
+}
+
+[data-value="invicible"]{
+    color: white;
+    text-align: right;
+}
+
+[data-value="error"]{
+    color: var(--error-color);
+    text-align: right;
+}
+
+[data-borderBill="error"]{
+    border: 1px solid var(--error-color);
+}
+
+[data-borderPeople="error"]{
+    border: 1px solid var(--error-color);
+}
+
+.shake{
+    animation: shake 0.4s ease-in;
+    box-shadow: 0 0 1px 4px var(--results-lightgreen-color);
+}
+
+@keyframes shake{
+    0% { transform: translateX(-5px); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
