@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.svg";
 
@@ -131,7 +131,7 @@ function App() {
             }
             <label htmlFor="bill">Bill</label>
             <input
-              data-borderBill={billError ? "error" : "invicible"}
+              data-border-bill={billError ? "error" : "invicible"}
               type="number"
               id="bill"
               placeholder="0"
@@ -166,7 +166,7 @@ function App() {
             </span>
             <label htmlFor="people">Number of People</label>
             <input
-              data-borderPeople={peopleError ? "error" : "invicible"}
+              data-border-people={peopleError ? "error" : "invicible"}
               type="number"
               placeholder="0"
               onChange={updatePeople}
@@ -176,19 +176,29 @@ function App() {
           </div>
         </div>
         <div className="results">
-          <div>
-            <p>Tip Amount</p>
-            <p className="per">/person</p>
-          </div>
-          <div>
-            <h2>{bill && chooseTipValue && people ? tipValue : ""}100</h2>
-          </div>
-          <div>
-            <p>Total</p>
-            <p className="per">/person</p>
-          </div>
-          <div>
-            <h2>{bill && people ? totalPrice : ""}100</h2>
+          <div className="results-tip">
+            <div className="results-box">
+              <div>
+                <p>Tip Amount</p>
+                <p className="per">/person</p>
+              </div>
+              <div>
+                <h2 className="inputed-number">
+                  {bill && chooseTipValue && people ? tipValue : "$0.00"}
+                </h2>
+              </div>
+            </div>
+            <div className="results-box">
+              <div>
+                <p>Total</p>
+                <p className="per">/person</p>
+              </div>
+              <div>
+                <h2 className="inputed-number">
+                  {bill && people ? totalPrice : "$0.00"}
+                </h2>
+              </div>
+            </div>
           </div>
           <button className="reset" onClick={reset}>
             reset
