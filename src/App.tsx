@@ -36,77 +36,51 @@ function App() {
     setCustomValue(val);
   };
 
-  const errorForBill: React.KeyboardEventHandler = (e) => {
-    if (e.key >= "a" && e.key <= "z") {
-      e.preventDefault();
-      setBillError(true);
-      setTimeout(() => setBillError(false), 400);
-    }
-    if (e.key >= "!" && e.key <= ")") {
-      e.preventDefault();
-      setBillError(true);
-      setTimeout(() => setBillError(false), 400);
-    }
-    if (e.key === "-" || e.key === "+") {
-      e.preventDefault();
-      setBillError(true);
-      setTimeout(() => setBillError(false), 400);
+  const handleInputError = (
+    setError: React.Dispatch<React.SetStateAction<boolean>>,
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    e.preventDefault();
+    setError(true);
+    setTimeout(() => {
+      setError(false);
+    }, 500);
+  };
+
+  const errorForBill: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (
+      (e.key >= "a" && e.key <= "z") ||
+      (e.key >= "!" && e.key <= ")") ||
+      e.key === "-" ||
+      e.key === "+"
+    ) {
+      handleInputError(setBillError, e);
     }
   };
 
-  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (e.key === ".") {
-      e.preventDefault();
-      setPeopleError(true);
-      setTimeout(() => {
-        setPeopleError(false);
-      }, 400);
-    }
-    if (e.key >= "a" && e.key <= "z") {
-      e.preventDefault();
-      setPeopleError(true);
-      setTimeout(() => {
-        setPeopleError(false);
-      }, 400);
-    }
-    if (e.key >= "!" && e.key <= ")") {
-      e.preventDefault();
-      setPeopleError(true);
-      setTimeout(() => {
-        setPeopleError(false);
-      }, 400);
-    }
-    if (e.key === "-" || e.key === "+") {
-      e.preventDefault();
-      setPeopleError(true);
-      setTimeout(() => {
-        setPeopleError(false);
-      }, 400);
+  const errorForPeople: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (
+      e.key === "." ||
+      (e.key >= "a" && e.key <= "z") ||
+      (e.key >= "!" && e.key <= ")") ||
+      e.key === "-" ||
+      e.key === "+"
+    ) {
+      handleInputError(setPeopleError, e);
     }
   };
 
   const handleCustomError: React.KeyboardEventHandler<HTMLInputElement> = (
     e
   ) => {
-    if (e.key === ".") {
-      e.preventDefault();
-      setCustomError(true);
-      setTimeout(() => setCustomError(false), 1000);
-    }
-    if (e.key >= "a" && e.key <= "z") {
-      e.preventDefault();
-      setCustomError(true);
-      setTimeout(() => setCustomError(false), 1000);
-    }
-    if (e.key >= "!" && e.key <= ")") {
-      e.preventDefault();
-      setCustomError(true);
-      setTimeout(() => setCustomError(false), 1000);
-    }
-    if (e.key === "-" || e.key === "+") {
-      e.preventDefault();
-      setCustomError(true);
-      setTimeout(() => setCustomError(false), 1000);
+    if (
+      e.key === "." ||
+      (e.key >= "a" && e.key <= "z") ||
+      (e.key >= "!" && e.key <= ")") ||
+      e.key === "-" ||
+      e.key === "+"
+    ) {
+      handleInputError(setCustomError, e);
     }
   };
 
@@ -170,7 +144,7 @@ function App() {
               type="number"
               placeholder="0"
               onChange={updatePeople}
-              onKeyDown={handleKeyDown}
+              onKeyDown={errorForPeople}
               value={people ? people : ""}
             />
           </div>

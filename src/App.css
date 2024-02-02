@@ -81,7 +81,7 @@ input{
     grid-template-rows: repeat(3, 1fr);
     row-gap: 14px;
     column-gap: 16px;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 .buttons-container span{
