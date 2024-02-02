@@ -176,21 +176,19 @@ function App() {
           </div>
         </div>
         <div className="results">
-          <div className="grid-results">
-            <div>
-              <p>Tip Amount</p>
-              <p className="per">/person</p>
-            </div>
-            <div>
-              <h2>{bill && chooseTipValue && people ? tipValue : ""}100</h2>
-            </div>
-            <div>
-              <p>Total</p>
-              <p className="per">/person</p>
-            </div>
-            <div>
-              <h2>{bill && people ? totalPrice : ""}100</h2>
-            </div>
+          <div>
+            <p>Tip Amount</p>
+            <p className="per">/person</p>
+          </div>
+          <div>
+            <h2>{bill && chooseTipValue && people ? tipValue : ""}100</h2>
+          </div>
+          <div>
+            <p>Total</p>
+            <p className="per">/person</p>
+          </div>
+          <div>
+            <h2>{bill && people ? totalPrice : ""}100</h2>
           </div>
           <button className="reset" onClick={reset}>
             reset
