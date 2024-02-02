@@ -48,6 +48,11 @@ label{
     max-width: 380px;
 }
 
+.input-container input:focus{
+    box-shadow: 0 0 0 2px var(--results-lightgreen-color);
+    border-radius: 4px;
+}
+
 .buttons-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -64,7 +69,7 @@ label{
     padding: 10px 0;
 }
 
-.buttons-container button,
+.tip-button,
 .button{
     width: 117px;
     border-radius: 2px;
@@ -73,6 +78,13 @@ label{
     font-weight: 700;
     background-color: var(--button-color);
     color: white;
+    border-radius: 5px;
+}
+
+.tip-button:hover{
+    cursor: pointer;
+    background-color: var(--hover-color);
+    color: var(--button-color);
 }
 
 .button{
@@ -97,6 +109,10 @@ input{
     background-color: var(--input-background-color);
     font-weight: 700;
     color: var(--button-color);
+}
+
+input:hover{
+    cursor: pointer;
 }
 
 .input-container input{
@@ -133,4 +149,45 @@ input{
     50% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
     100% { transform: translateX(0); }
+}
+
+.results{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.grid-results{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.grid-results p, 
+h2{
+    color: white;
+}
+
+.reset{
+    background-color: var(--results-lightgreen-color);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 0;
+    text-transform: uppercase;
+    color: var(--button-color);
+    border: none;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.reset:hover{
+    cursor: pointer;
+    background-color: var(--hover-color);
+}
+
+.per{
+    color: var(--per-color);
 }

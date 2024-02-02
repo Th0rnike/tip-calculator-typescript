@@ -143,7 +143,11 @@ function App() {
           <div className="buttons-container">
             <span>Select Tip %</span>
             {tipsArray.map((t) => (
-              <button key={crypto.randomUUID()} onClick={updateTip}>
+              <button
+                className="tip-button"
+                key={crypto.randomUUID()}
+                onClick={updateTip}
+              >
                 {t + "%"}
               </button>
             ))}
@@ -172,11 +176,25 @@ function App() {
           </div>
         </div>
         <div className="results">
-          <div>
-            Tip Amount {bill && chooseTipValue && people ? tipValue : ""}
+          <div className="grid-results">
+            <div>
+              <p>Tip Amount</p>
+              <p className="per">/person</p>
+            </div>
+            <div>
+              <h2>{bill && chooseTipValue && people ? tipValue : ""}100</h2>
+            </div>
+            <div>
+              <p>Total</p>
+              <p className="per">/person</p>
+            </div>
+            <div>
+              <h2>{bill && people ? totalPrice : ""}100</h2>
+            </div>
           </div>
-          <div>Total {bill && people ? totalPrice : ""}</div>
-          <button onClick={reset}>reset</button>
+          <button className="reset" onClick={reset}>
+            reset
+          </button>
         </div>
       </div>
     </div>
