@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.svg";
+import InputContainer from "./components/InputContainer";
+import ButtonsContainer from "./components/ButtonsContainer";
+import PeopleContainer from "./components/PeopleContainer";
+import Results from "./components/Results";
 
 function App() {
   const [bill, setBill] = useState<number>(0);
@@ -47,7 +51,7 @@ function App() {
     }, 500);
   };
 
-  const errorForBill: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+  const billValidation: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (
       (e.key >= "a" && e.key <= "z") ||
       (e.key >= "!" && e.key <= ")") ||
@@ -58,7 +62,9 @@ function App() {
     }
   };
 
-  const errorForPeople: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+  const peopleValidation: React.KeyboardEventHandler<HTMLInputElement> = (
+    e
+  ) => {
     if (
       e.key === "." ||
       (e.key >= "a" && e.key <= "z") ||
@@ -70,7 +76,7 @@ function App() {
     }
   };
 
-  const handleCustomError: React.KeyboardEventHandler<HTMLInputElement> = (
+  const customButtonValidation: React.KeyboardEventHandler<HTMLInputElement> = (
     e
   ) => {
     if (
@@ -95,97 +101,34 @@ function App() {
       <img className="image" src={logo} alt="" />
       <div className="container">
         <div className="input-div">
-          <div className="input-container">
-            {
-              <span data-value={billError ? "error" : "invicible"}>
-                Numbers Only
-              </span>
-            }
-            <label htmlFor="bill">Bill</label>
-            <input
-              data-border-bill={billError ? "error" : "invicible"}
-              type="number"
-              id="bill"
-              placeholder="0"
-              onKeyDown={errorForBill}
-              onChange={(e) => setBill(e.target.valueAsNumber)}
-              value={bill ? bill : ""}
-            />
-          </div>
-          <div className="buttons-container">
-            <span>Select Tip %</span>
-            {[5, 10, 15, 25, 50].map((t, index) => (
-              <button
-                // className={current ? "tip-button active" : "tip-button"}
-                style={{
-                  backgroundColor:
-                    customValue !== 0
-                      ? "rgba(0, 71, 75, 1)"
-                      : tip === t
-                      ? "rgba(159, 232, 223, 1)"
-                      : "rgba(0, 71, 75, 1)",
-                }}
-                className="tip-button"
-                key={index}
-                onClick={updateTip}
-              >
-                {t + "%"}
-              </button>
-            ))}
-            <input
-              className={customError ? "button shake" : "button"}
-              type="number"
-              placeholder="Custom"
-              onChange={customTip}
-              onKeyDown={handleCustomError}
-              value={customValue ? customValue : ""}
-            />
-          </div>
-          <div className="input-container">
-            <span data-value={peopleError ? "error" : "invicible"}>
-              Numbers Only
-            </span>
-            <label htmlFor="people">Number of People</label>
-            <input
-              data-border-people={peopleError ? "error" : "invicible"}
-              type="number"
-              placeholder="0"
-              id="people"
-              onChange={updatePeople}
-              onKeyDown={errorForPeople}
-              value={people ? people : ""}
-            />
-          </div>
+          <InputContainer
+            bill={bill}
+            billError={billError}
+            billValidation={billValidation}
+            setBill={setBill}
+          />
+          <ButtonsContainer
+            customError={customError}
+            customTip={customTip}
+            customValue={customValue}
+            customButtonValidation={customButtonValidation}
+            tip={tip}
+            updateTip={updateTip}
+          />
+          <PeopleContainer
+            peopleValidation={peopleValidation}
+            people={people}
+            peopleError={peopleError}
+            updatePeople={updatePeople}
+          />
         </div>
-        <div className="results">
-          <div className="results-tip">
-            <div className="results-box">
-              <div>
-                <p>Tip Amount</p>
-                <p className="per">/person</p>
-              </div>
-              <div>
-                <h2 className="inputed-number">
-                  {bill && chooseTipValue && people ? tipValue : "$0.00"}
-                </h2>
-              </div>
-            </div>
-            <div className="results-box">
-              <div>
-                <p>Total</p>
-                <p className="per">/person</p>
-              </div>
-              <div>
-                <h2 className="inputed-number">
-                  {bill && people ? totalPrice : "$0.00"}
-                </h2>
-              </div>
-            </div>
-          </div>
-          <button className="reset" onClick={reset}>
-            reset
-          </button>
-        </div>
+        <Results
+          bill={bill}
+          people={people}
+          reset={reset}
+          tipValue={tipValue}
+          totalPrice={totalPrice}
+        />
       </div>
     </div>
   );

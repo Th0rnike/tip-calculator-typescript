@@ -103,12 +103,8 @@ input{
 
 .tip-button:hover{
     cursor: pointer;
-    background-color: var(--background-color);
+    background-color: var(--results-lightgreen-color);
     color: var(--button-color);
-}
-
-.active{
-    background-color: red;
 }
 
 .button{
