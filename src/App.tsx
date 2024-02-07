@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.svg";
 
@@ -12,12 +12,12 @@ function App() {
   const [peopleError, setPeopleError] = useState<boolean>(false);
 
   const chooseTipValue = customValue !== 0 ? customValue : tip;
+
   const tipValue = Number(
     (((bill / people) * chooseTipValue) / 100).toFixed(2)
   );
 
   const totalPrice = Number((bill / people).toFixed(2));
-  const tipsArray = [5, 10, 15, 25, 50];
 
   const updatePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.valueAsNumber;
@@ -90,8 +90,6 @@ function App() {
     setTip(0);
   };
 
-  // useEffect
-
   return (
     <div className="App">
       <img className="image" src={logo} alt="" />
@@ -116,10 +114,19 @@ function App() {
           </div>
           <div className="buttons-container">
             <span>Select Tip %</span>
-            {tipsArray.map((t) => (
+            {[5, 10, 15, 25, 50].map((t, index) => (
               <button
+                // className={current ? "tip-button active" : "tip-button"}
+                style={{
+                  backgroundColor:
+                    customValue !== 0
+                      ? "rgba(0, 71, 75, 1)"
+                      : tip === t
+                      ? "rgba(159, 232, 223, 1)"
+                      : "rgba(0, 71, 75, 1)",
+                }}
                 className="tip-button"
-                key={crypto.randomUUID()}
+                key={index}
                 onClick={updateTip}
               >
                 {t + "%"}
@@ -143,6 +150,7 @@ function App() {
               data-border-people={peopleError ? "error" : "invicible"}
               type="number"
               placeholder="0"
+              id="people"
               onChange={updatePeople}
               onKeyDown={errorForPeople}
               value={people ? people : ""}

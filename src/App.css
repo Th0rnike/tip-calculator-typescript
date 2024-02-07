@@ -58,7 +58,7 @@ label{
 }
 
 .input-container input:hover,
-.input-container input{
+.input-container input:focus{
     cursor: pointer;
     box-shadow: 0 0 0 2px rgba(38, 194, 174, 1);
     border-radius: 4px;
@@ -105,6 +105,10 @@ input{
     cursor: pointer;
     background-color: var(--background-color);
     color: var(--button-color);
+}
+
+.active{
+    background-color: red;
 }
 
 .button{
