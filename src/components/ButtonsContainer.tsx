@@ -1,22 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface ButtonsInterface {
   customValue: number;
   tip: number;
   updateTip: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  customError: boolean;
   customTip: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  customButtonValidation: React.KeyboardEventHandler<HTMLInputElement>;
+  handleInputError: (
+    setError: React.Dispatch<React.SetStateAction<boolean>>,
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => void;
 }
 
 const ButtonsContainer: React.FC<ButtonsInterface> = ({
-  customError,
   customTip,
   customValue,
-  customButtonValidation,
   tip,
   updateTip,
+  handleInputError,
 }) => {
+  const [customError, setCustomError] = useState<boolean>(false);
+
+  const customButtonValidation: React.KeyboardEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    if (
+      e.key === "." ||
+      (e.key >= "a" && e.key <= "z") ||
+      (e.key >= "!" && e.key <= ")") ||
+      e.key === "-" ||
+      e.key === "+"
+    ) {
+      handleInputError(setCustomError, e);
+    }
+  };
+
   return (
     <div className="buttons-container">
       <span>Select Tip %</span>

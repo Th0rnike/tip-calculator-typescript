@@ -6,7 +6,9 @@ interface resultsInterface {
   people: number;
   tipValue: number;
   totalPrice: number;
-  reset: () => void;
+  setBill: (arg: number) => void;
+  setPeople: (arg: number) => void;
+  setTip: (arg: number) => void;
 }
 
 const Results: React.FC<resultsInterface> = ({
@@ -14,7 +16,9 @@ const Results: React.FC<resultsInterface> = ({
   people,
   tipValue,
   totalPrice,
-  reset,
+  setBill,
+  setPeople,
+  setTip,
 }) => {
   const chooseTipValue = Number(
     bill && tipValue && people ? tipValue : "$0.00"
@@ -26,7 +30,7 @@ const Results: React.FC<resultsInterface> = ({
         <ResultBox title="Tip Amount" amount={chooseTipValue} />
         <ResultBox title="Total" amount={choosePeopleValue} />
       </div>
-      <ResetButton onClick={reset} />
+      <ResetButton setBill={setBill} setPeople={setPeople} setTip={setTip} />
     </div>
   );
 };
