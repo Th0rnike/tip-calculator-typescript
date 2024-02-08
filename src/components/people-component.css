@@ -13,3 +13,11 @@
     color: var(--error-color);
     text-align: right;
 }
+
+#person{
+    width: 13px;
+    height: 16px;
+    position: relative;
+    top: 35px;
+    left: 20px;
+}

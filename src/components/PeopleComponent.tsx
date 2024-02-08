@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./people-component.css"
+import "./people-component.css";
+import person from "../assets/icon-person.svg";
 
 interface PeopleInterface {
   updatePeople: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -30,12 +31,12 @@ const PeopleContainer: React.FC<PeopleInterface> = ({
   };
 
   const [peopleError, setPeopleError] = useState<boolean>(false);
-  
 
   return (
     <div className="input-container">
       <span data-value={peopleError ? "error" : "invicible"}>Numbers Only</span>
       <label htmlFor="people">Number of People</label>
+      <img id="person" src={person} alt="" />
       <input
         data-border-people={peopleError ? "error" : "invicible"}
         type="number"

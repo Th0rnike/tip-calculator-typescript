@@ -31,8 +31,6 @@ const Results: React.FC<resultsInterface> = ({
 
   const tipAmount = bill && people && tipValue ? tipValue : "$0.00";
 
-  console.log(typeof choosePeopleValue);
-
   return (
     <div className="results">
       <div className="results-tip">

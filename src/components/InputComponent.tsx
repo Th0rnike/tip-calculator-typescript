@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./input-component.css"
+import "./input-component.css";
+import dollar from "../assets/icon-dollar.svg";
 
 interface InputInterface {
   bill: number;
@@ -32,6 +33,7 @@ const InputContainer: React.FC<InputInterface> = ({
     <div className="input-container">
       {<span data-value={billError ? "error" : "invicible"}>Numbers Only</span>}
       <label htmlFor="bill">Bill</label>
+      <img id="dollar" src={dollar} alt="" />
       <input
         data-border-bill={billError ? "error" : "invicible"}
         type="number"
