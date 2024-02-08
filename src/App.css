@@ -43,3 +43,22 @@ body{
 label{
     color: var(--label-color);
 }
+
+@media screen and (max-width: 900px) {
+    .image{
+        margin-bottom: 50px;
+    }
+    .container{
+        grid-template-columns: 1fr;
+        padding: 32px;
+    }
+    .input-container input{
+        max-width: 311px;
+
+    }
+    .buttons-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+    
+}
