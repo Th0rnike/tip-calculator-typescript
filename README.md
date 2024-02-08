@@ -6,6 +6,9 @@ Welcome to the Tip Calculator project! This application helps you quickly calcul
 
 Easily calculate tips and split bills with the Tip Calculator! Whether dining out or sharing expenses, this user-friendly app helps you determine the right tip amount and divide the bill effortlessly. Simply input the bill amount, select your preferred tip percentage, and specify the number of people. The Tip Calculator takes care of the rest, ensuring fair contributions and a smooth dining experience.
 
+### Project image
+![Screenshot 2024-02-08 at 22-03-02 Vite React TS](https://github.com/Th0rnike/tip-calculator-typescript/assets/116254117/1c500873-3750-41ed-8163-7c77b366bfbf)
+
 ## Table of Contents
 
 - [Installation](#installation)
