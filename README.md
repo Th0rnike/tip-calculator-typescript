@@ -95,10 +95,7 @@ Once you have installed and started the Tip Calculator project, follow these ste
 We would like to express our gratitude to the following tools, platforms, and resources for their support during the development of the Tip Calculator project:
 
 - [BitCamp Reactor](https://reactor.bitcamp.ge/): BitCamp Reactor, a coding education platform, tasked us with designing the UI/UX for the Tip Calculator project using Figma. Their instructional video lectures provided essential insights for completing the task.
-- [Figma](https://www.figma.com/file/CELgSjSm9RGfClpFBWm7kp/tip-calculator-app?type=design&node-id=0-70&mode=design&t=AkJ0SIpsMiP9fyfM-0): Used for designing UI/UX prototypes for the Tip Calculator project.
+- [Figma]([https://www.figma.com/file/CELgSjSm9RGfClpFBWm7kp/tip-calculator-app?type=design&node-id=0-70&mode=design&t=AkJ0SIpsMiP9fyfM-0](https://www.figma.com/file/DN9n5Yoz8Z3XivGpjDUgxu/clock-app?type=design&node-id=0-52&mode=design&t=kFVenEfpknjqz2RA-0)): Used for designing UI/UX prototypes for the Tip Calculator project.
 - [ChatGPT](https://chat.openai.com/): Used for generating ideas and assistance during the development process.
 
 Thank you to BitCamp Reactor, Figma, and ChatGPT for their valuable contributions to the Tip Calculator project!
-
-
-# tip-calculator-typescript
