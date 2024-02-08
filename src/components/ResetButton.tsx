@@ -1,4 +1,5 @@
 import React from "react";
+import "./reset-button.css"
 
 interface resetButtonProps {
   setBill: (arg: number) => void;

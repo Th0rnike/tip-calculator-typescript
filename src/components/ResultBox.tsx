@@ -1,8 +1,9 @@
 import React from "react";
+import "./result.css"
 
 interface resBoxInterface {
   title: string;
-  amount: number;
+  amount: string;
 }
 
 const ResultBox: React.FC<resBoxInterface> = ({ amount, title }) => {

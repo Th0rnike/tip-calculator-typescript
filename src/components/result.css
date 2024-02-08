@@ -1,0 +1,32 @@
+.results-box p{
+    font-size: 16px;
+    color: white;
+}
+
+.per{
+    color: var(--per-color) !important;
+    font-size: 13px !important;
+}
+
+.inputed-number{
+    color: var(--results-lightgreen-color);
+    font-size: 48px;
+}
+
+.results{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 40px;
+}
+
+.results-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results-box:first-child{
+    margin-bottom: 40px;
+}

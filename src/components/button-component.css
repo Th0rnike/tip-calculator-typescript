@@ -1,0 +1,59 @@
+.buttons-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 14px;
+    column-gap: 16px;
+    margin: 20px 0;
+}
+
+.buttons-container span{
+    grid-column: span 3;
+    color: var(--label-color);
+    padding-top: 20px;
+}
+
+.tip-button,
+.button{
+    width: 117px;
+    font-size: 24px;
+    border: none;
+    font-weight: 700;
+    background-color: var(--button-color);
+    color: white;
+    border-radius: 5px;
+}
+
+.tip-button:hover{
+    cursor: pointer;
+    background-color: var(--results-lightgreen-color);
+    color: var(--button-color);
+}
+
+.button{
+    background-color: white;
+    color: var(--button-color);
+    padding: 10px 0;
+    text-align: center;
+}
+
+.button:focus{
+    box-shadow: 0 0 0 2px var(--results-lightgreen-color);
+}
+
+.button::placeholder{
+    color: var(--custom-color);
+}
+
+.shake{
+    box-shadow: 0px 0px 0px 4px var(--results-lightgreen-color);
+    animation: shake 0.4s ease-in;
+}
+
+@keyframes shake{
+    0% { transform: translateX(-5px); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}

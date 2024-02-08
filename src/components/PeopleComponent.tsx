@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./people-component.css"
 
 interface PeopleInterface {
   updatePeople: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -29,6 +30,7 @@ const PeopleContainer: React.FC<PeopleInterface> = ({
   };
 
   const [peopleError, setPeopleError] = useState<boolean>(false);
+  
 
   return (
     <div className="input-container">

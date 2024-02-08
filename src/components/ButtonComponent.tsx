@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./button-component.css"
 
 interface ButtonsInterface {
   customValue: number;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.svg";
-import InputContainer from "./components/InputContainer";
-import ButtonsContainer from "./components/ButtonsContainer";
-import PeopleContainer from "./components/PeopleContainer";
+import InputContainer from "./components/InputComponent";
+import ButtonsComponent from "./components/ButtonComponent";
+import PeopleContainer from "./components/PeopleComponent";
 import Results from "./components/Results";
 
 function App() {
@@ -11,14 +11,6 @@ function App() {
   const [people, setPeople] = useState<number>(0);
   const [tip, setTip] = useState<number>(0);
   const [customValue, setCustomValue] = useState<number>(0);
-
-  const chooseTipValue = customValue !== 0 ? customValue : tip;
-
-  const tipValue = Number(
-    (((bill / people) * chooseTipValue) / 100).toFixed(2)
-  );
-
-  const totalPrice = Number((bill / people).toFixed(2));
 
   const updatePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.valueAsNumber;
@@ -58,7 +50,7 @@ function App() {
             setBill={setBill}
             handleInputError={handleInputError}
           />
-          <ButtonsContainer
+          <ButtonsComponent
             customTip={customTip}
             customValue={customValue}
             tip={tip}
@@ -74,8 +66,8 @@ function App() {
         <Results
           bill={bill}
           people={people}
-          tipValue={tipValue}
-          totalPrice={totalPrice}
+          customValue={customValue}
+          tip={tip}
           setBill={setBill}
           setPeople={setPeople}
           setTip={setTip}

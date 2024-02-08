@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./input-component.css"
 
 interface InputInterface {
   bill: number;
