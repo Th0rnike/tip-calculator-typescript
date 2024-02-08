@@ -103,3 +103,4 @@ We would like to express our gratitude to the following tools, platforms, and re
 Thank you to BitCamp Reactor, Figma, and ChatGPT for their valuable contributions to the Tip Calculator project!
 
 
+# tip-calculator-typescript
