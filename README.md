@@ -78,8 +78,6 @@ Once you have installed and started the Tip Calculator project, follow these ste
 
 ## Features
 
-## Features
-
 - **Easy Bill Splitting**: Divide the bill amount among multiple people effortlessly.
 
 - **Tip Calculation**: Quickly calculate the tip based on the bill amount and selected percentage.
